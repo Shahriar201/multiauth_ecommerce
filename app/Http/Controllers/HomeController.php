@@ -24,6 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.frontend_master');
+        return view('frontend.layouts.frontend_home');
     }
 }
