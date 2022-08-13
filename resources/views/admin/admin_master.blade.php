@@ -38,6 +38,15 @@
 
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ asset('public/backend') }}//css/starlight.css">
+
+    <!-- jQuery UI 1.11.4 -->
+    {{-- <script src="{{ asset('backend/assets') }}/plugins/jquery-ui/jquery-ui.min.js"></script> --}}
+    <script src="{{ asset('public/backend/lib/jquery-ui/jquery-ui.min.js') }}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    {{-- <script src="{{ asset('backend/assets/plugins/toastr/toastr.min.js') }}"></script> --}}
+    <script src="{{ asset('public/backend/lib/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('public/backend/lib/toastr/toastr.min.css') }}"></script>
+    {{-- <script src="{{ asset('backend/assets/plugins/toastr/toastr.min.css') }}"></script> --}}
   </head>
 
   <body>
@@ -59,6 +68,48 @@
 
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
+
+    <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+    <script>
+        @if(Session::has('messege'))
+          var type="{{Session::get('alert-type','info')}}"
+          switch(type){
+              case 'info':
+                   toastr.info("{{ Session::get('messege') }}");
+                   break;
+              case 'success':
+                  toastr.success("{{ Session::get('messege') }}");
+                  break;
+              case 'warning':
+                 toastr.warning("{{ Session::get('messege') }}");
+                  break;
+              case 'error':
+                  toastr.error("{{ Session::get('messege') }}");
+                  break;
+          }
+        @endif
+    </script>
+
+    <script>
+         $(document).on("click", "#delete", function(e){
+             e.preventDefault();
+             var link = $(this).attr("href");
+                swal({
+                  title: "Are you Want to delete?",
+                  text: "Once Delete, This will be Permanently Delete!",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                })
+                .then((willDelete) => {
+                  if (willDelete) {
+                       window.location.href = link;
+                  } else {
+                    swal("Safe Data!");
+                  }
+                });
+            });
+    </script>
 
     <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script>
     <script src="{{ asset('public/backend') }}/lib/popper.js/popper.js"></script>
