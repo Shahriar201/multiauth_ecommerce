@@ -19,6 +19,11 @@ class AdminController extends Controller
     {
         return view('admin.admin_home');
     }
+    
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
 
     public function changePassword() {
         return view('admin.auth.change-password');
