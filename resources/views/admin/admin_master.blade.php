@@ -52,10 +52,10 @@
 
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="sl-mainpanel">
-      
+
       @yield('admin_content')
-      
-      @include('admin.admin_footer')
+
+      {{-- @include('admin.admin_footer') --}}
 
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
