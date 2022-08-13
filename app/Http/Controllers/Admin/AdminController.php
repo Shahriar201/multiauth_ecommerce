@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function adminIndex()
+    {
+        return view('admin.admin_home');
+    }
+
     public function changePassword() {
         return view('admin.auth.change-password');
     }
