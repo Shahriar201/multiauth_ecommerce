@@ -10,29 +10,35 @@
 
 <div class="sl-pagebody">
     <div class="sl-page-title">
-      <h5>Categoty List</h5>
+      <h5>Categoty Table</h5>
     </div>
 
     <div class="card pd-20 pd-sm-40">
-      <div class="table-wrapper">
-        <table id="datatable1" class="table display responsive nowrap">
-          <thead>
-            <tr>
-              <th class="wd-15p">SL.</th>
-              <th class="wd-15p">Category Name</th>
-              <th class="wd-20p">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Tiger</td>
-              <td>Nixon</td>
-              <td>System Architect</td>
-            </tr>
-          </tbody>
-        </table>
-      </div><!-- table-wrapper -->
-    </div><!-- card -->
+        <h6 class="card-body-title">Category List
+            <a href="#" class="btn btn-warning" style="float: right">Add New</a>
+        </h6>
+        <div class="table-wrapper">
+            <table id="datatable1" class="table display responsive nowrap">
+            <thead>
+                <tr>
+                <th class="wd-15p">SL.</th>
+                <th class="wd-15p">Category Name</th>
+                <th class="wd-20p">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Tiger</td>
+                <td>Nixon</td>
+                <td>
+                    <a href="#" title="Edit" class="btn btn-sm btn-info">Edit</a>
+                    <a href="#" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
   </div
 
 
