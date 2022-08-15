@@ -32,5 +32,5 @@ Route::post('/admin/password-update', [App\Http\Controllers\Admin\AdminControlle
 // ========================= Admin Section ======================
 // Category
 Route::prefix('admin')->group(function() {
-    Route::get('/categories', [App\Http\Controllers\Admin\Category\CategoryController::class, 'categories'])->name('categories');
+    Route::get('/categories', [App\Http\Controllers\Admin\Category\CategoryController::class, 'category'])->name('categories');
 });

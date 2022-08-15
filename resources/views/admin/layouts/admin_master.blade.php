@@ -35,6 +35,8 @@
     <link href="{{ asset('public/backend') }}//lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="{{ asset('public/backend') }}//lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="{{ asset('public/backend') }}//lib/rickshaw/rickshaw.min.css" rel="stylesheet">
+    <link href="{{ asset('public/backend') }}/lib/datatables/jquery.dataTables.css" rel="stylesheet">
+    <link href="{{ asset('public/backend') }}/lib/select2/css/select2.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
     <!-- Starlight CSS -->
@@ -67,6 +69,30 @@
 
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
+    <script>
+        $(function(){
+        'use strict';
+
+        $('#datatable1').DataTable({
+            responsive: true,
+            language: {
+            searchPlaceholder: 'Search...',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+            }
+        });
+
+        $('#datatable2').DataTable({
+            bLengthChange: false,
+            searching: false,
+            responsive: true
+        });
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
+        });
+    </script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
@@ -87,6 +113,9 @@
     <script src="{{ asset('public/backend') }}/js/starlight.js"></script>
     <script src="{{ asset('public/backend') }}/js/ResizeSensor.js"></script>
     <script src="{{ asset('public/backend') }}/js/dashboard.js"></script>
+    <script src="{{ asset('public/backend') }}/lib/datatables/jquery.dataTables.js"></script>
+    <script src="{{ asset('public/backend') }}/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="{{ asset('public/backend') }}/lib/select2/js/select2.min.js"></script>
 
     <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
     <script>
