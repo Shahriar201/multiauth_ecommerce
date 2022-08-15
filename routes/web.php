@@ -28,3 +28,9 @@ Route::get('/admin', [App\Http\Controllers\Admin\AdminController::class, 'showLo
 Route::get('/admin/home', [App\Http\Controllers\Admin\AdminController::class, 'adminIndex'])->name('admin.home');
 Route::get('/admin/password-change', [App\Http\Controllers\Admin\AdminController::class, 'changePassword'])->name('admin.password.change');
 Route::post('/admin/password-update', [App\Http\Controllers\Admin\AdminController::class, 'updatePassword'])->name('admin.password.update');
+
+// ========================= Admin Section ======================
+// Category
+Route::prefix('admin')->group(function() {
+    Route::get('/categories', [App\Http\Controllers\Admin\Category\CategoryController::class, 'categories'])->name('categories');
+});

@@ -9,6 +9,10 @@ class CategoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('is_admin');
+        $this->middleware('auth');
+    }
+
+    public function categories() {
+dd('Ok');
     }
 }
