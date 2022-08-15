@@ -51,11 +51,11 @@
   <body>
 
     <!-- ########## START: LEFT PANEL ########## -->
-    @include('admin.admin_sidebar')
+    @include('admin.layouts.admin_sidebar')
     <!-- ########## END: LEFT PANEL ########## -->
 
     <!-- ########## START: HEAD PANEL ########## -->
-    @include('admin.admin_header')
+    @include('admin.layouts.admin_header')
     <!-- ########## END: HEAD PANEL ########## -->
 
     <!-- ########## START: MAIN PANEL ########## -->

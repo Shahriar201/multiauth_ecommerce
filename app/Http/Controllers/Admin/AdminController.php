@@ -17,9 +17,9 @@ class AdminController extends Controller
 
     public function adminIndex()
     {
-        return view('admin.admin_home');
+        return view('admin.layouts.admin_home');
     }
-    
+
     public function showLoginForm()
     {
         return view('auth.login');
