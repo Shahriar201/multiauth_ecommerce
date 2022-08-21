@@ -18,4 +18,10 @@ class CategoryController extends Controller
 
         return view('admin.category.category', compact('categories'));
     }
+
+    public function storeCategory (Request $request) {
+        $validated = $request->validate([
+            'category_name' => 'required|unique:categories,category_name',
+        ]);
+    }
 }
