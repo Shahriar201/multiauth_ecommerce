@@ -48,6 +48,7 @@
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     {{-- <script src="{{ asset('public/backend/lib/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('public/backend/lib/toastr/toastr.min.css') }}"></script> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
 
   <body>
@@ -94,8 +95,6 @@
         });
     </script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
     <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script>
     <script src="{{ asset('public/backend') }}/lib/popper.js/popper.js"></script>
     <script src="{{ asset('public/backend') }}/lib/bootstrap/bootstrap.js"></script>
@@ -116,27 +115,9 @@
     <script src="{{ asset('public/backend') }}/lib/datatables/jquery.dataTables.js"></script>
     <script src="{{ asset('public/backend') }}/lib/datatables-responsive/dataTables.responsive.js"></script>
     <script src="{{ asset('public/backend') }}/lib/select2/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
-    <script>
-        @if(Session::has('messege'))
-          var type="{{Session::get('alert-type','info')}}"
-          switch(type){
-              case 'info':
-                   toastr.info("{{ Session::get('messege') }}");
-                   break;
-              case 'success':
-                  toastr.success("{{ Session::get('messege') }}");
-                  break;
-              case 'warning':
-                 toastr.warning("{{ Session::get('messege') }}");
-                  break;
-              case 'error':
-                  toastr.error("{{ Session::get('messege') }}");
-                  break;
-          }
-        @endif
-    </script>
 
     <script>
          $(document).on("click", "#delete", function(e){
@@ -157,6 +138,15 @@
                   }
                 });
             });
+    </script>
+
+    <script>
+        @if (Session::has('success'))
+            toastr.success("{{ Session::get('success') }}")
+        @endif
+        @if (Session::has('error'))
+            toastr.error("{{ Session::get('error') }}")
+        @endif
     </script>
   </body>
 </html>

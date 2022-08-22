@@ -28,11 +28,7 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->status = $request->status;
         $category->save();
-        $notification = array(
-            'message' => 'Category Created Successfully!',
-            'alert-type' => 'success'
-        );
 
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with('success', 'Category Created Successfully!');
     }
 }
