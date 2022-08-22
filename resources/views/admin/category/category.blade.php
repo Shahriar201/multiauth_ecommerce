@@ -56,12 +56,16 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="category_name">Category</label>
+                            <input type="text" class="form-control" id="category_name" name="category_name" aria-describedby="emailHelp" placeholder="Enter email">
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label for="status">Password</label>
+                            <select name="status" class="form-control col-md-12" id="">
+                                <option value="">Select Status</option>
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
                         </div>
                     </div>
                 </div>

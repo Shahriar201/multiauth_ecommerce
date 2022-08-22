@@ -23,5 +23,16 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'category_name' => 'required|unique:categories,category_name',
         ]);
+
+        $category = new Category();
+        $category->category_name = $request->category_name;
+        $category->status = $request->status;
+        $category->save();
+        $notification = array(
+            'message' => 'Category Created Successfully!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 }
