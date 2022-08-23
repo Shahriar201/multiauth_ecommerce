@@ -34,4 +34,5 @@ Route::post('/admin/password-update', [App\Http\Controllers\Admin\AdminControlle
 Route::prefix('admin')->group(function() {
     Route::get('/categories', [App\Http\Controllers\Admin\Category\CategoryController::class, 'category'])->name('categories');
     Route::post('/store/category', [App\Http\Controllers\Admin\Category\CategoryController::class, 'storeCategory'])->name('store.category');
+    Route::get('/delete/category/{id}', [App\Http\Controllers\Admin\Category\CategoryController::class, 'deleteCategory'])->name('delete.category');
 });

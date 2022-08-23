@@ -35,4 +35,11 @@ class CategoryController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function deleteCategory($id) {
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect()->back()->with('success', 'Category Deleted Successfully!');
+    }
 }

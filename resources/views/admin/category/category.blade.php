@@ -33,7 +33,7 @@
                         <td>{{ $category->category_name ?? '' }}</td>
                         <td>
                             <a href="#" title="Edit" class="btn btn-sm btn-info">Edit</a>
-                            <a href="#" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                            <a href="{{ route('delete.category', $category->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
                         </td>
                     </tr>
                 @empty
