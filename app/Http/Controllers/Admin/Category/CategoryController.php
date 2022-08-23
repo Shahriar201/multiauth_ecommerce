@@ -24,11 +24,15 @@ class CategoryController extends Controller
             'category_name' => 'required|unique:categories,category_name',
         ]);
 
-        $category = new Category();
-        $category->category_name = $request->category_name;
-        $category->status = $request->status;
-        $category->save();
+        try {
+            $category = new Category();
+            $category->category_name = $request->category_name;
+            $category->status = $request->status;
+            $category->save();
 
-        return redirect()->back()->with('success', 'Category Created Successfully!');
+            return redirect()->back()->with('success', 'Category Created Successfully!');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }
