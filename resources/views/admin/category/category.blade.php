@@ -27,14 +27,20 @@
                 </tr>
             </thead>
             <tbody>
+                @forelse ($categories as $key => $category)
+                    <tr>
+                        <td>{{ ++$key }}</td>
+                        <td>{{ $category->category_name ?? '' }}</td>
+                        <td>
+                            <a href="#" title="Edit" class="btn btn-sm btn-info">Edit</a>
+                            <a href="#" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                        </td>
+                    </tr>
+                @empty
                 <tr>
-                <td>Tiger</td>
-                <td>Nixon</td>
-                <td>
-                    <a href="#" title="Edit" class="btn btn-sm btn-info">Edit</a>
-                    <a href="#" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
-                </td>
+                    <td colspan="3" class="text-center">No Package Found</td>
                 </tr>
+                @endforelse
             </tbody>
             </table>
         </div>
@@ -69,7 +75,7 @@
                             <input type="text" class="form-control" id="category_name" name="category_name" aria-describedby="emailHelp" placeholder="Enter email">
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="status">Password</label>
+                            <label for="status">Status</label>
                             <select name="status" class="form-control col-md-12" id="">
                                 <option value="">Select Status</option>
                                 <option value="1">Active</option>
