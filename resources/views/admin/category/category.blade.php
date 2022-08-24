@@ -23,6 +23,7 @@
                 <tr>
                 <th class="wd-15p">SL.</th>
                 <th class="wd-15p">Category Name</th>
+                <th class="wd-15p">Status</th>
                 <th class="wd-20p">Action</th>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td>{{ $category->category_name ?? '' }}</td>
+                        <td>{{ $category->status == 1 ? 'Active' : 'Inactive' }}</td>
                         <td>
                             <a href="#" title="Edit" data-toggle="modal" data-target='.update_modal' class="btn btn-sm btn-info"
                                 data-id="{{ $category->id }}"
@@ -76,7 +78,7 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="category_name">Category</label>
-                            <input type="text" class="form-control" name="category_name" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="text" class="form-control" name="category_name" aria-describedby="emailHelp" placeholder="Enter Category Name">
                         </div>
                         <div class="form-group col-md-12">
                             <label for="status">Status</label>
@@ -108,14 +110,14 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form method="post" action="{{ route('store.category') }}">
+            <form method="post" action="{{ route('update.category') }}">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
                         <input type="hidden" id="id" class="id" name="id" value="">
                         <div class="form-group col-md-12">
                             <label for="category_name">Category</label>
-                            <input type="text" class="form-control category_name" id="category_name" name="category_name" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="text" class="form-control category_name" id="category_name" name="category_name" aria-describedby="emailHelp" placeholder="Enter Category Name">
                         </div>
                         <div class="form-group col-md-12">
                             <label for="status">Status</label>
@@ -129,7 +131,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
           </div>
