@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Category;
 
+use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Category;
@@ -25,6 +26,7 @@ class CategoryController extends Controller
         ]);
 
         try {
+
             $category = new Category();
             $category->category_name = $request->category_name;
             $category->status = $request->status;
@@ -43,11 +45,12 @@ class CategoryController extends Controller
         ]);
 
         try {
-            Category::findOrFail($request->id)->update([
-                'category_name' => $request->category_name,
-                'status'        => $request->status,
-                'updated_by'    => auth()->user()->id,
-            ]);
+
+            $category = Category::findOrFail($request->id);
+            $category->category_name = $request->category_name;
+            $category->status = $request->status;
+            $category->updated_by = auth()->user()->id;
+            $category->save();
 
             return redirect()->back()->with('success', 'Category Updated Successfully!');
         } catch (\Exception $e) {
