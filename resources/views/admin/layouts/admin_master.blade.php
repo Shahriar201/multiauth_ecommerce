@@ -140,6 +140,18 @@
             });
     </script>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#image').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#showImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    </script>
+
     <script>
         @if (Session::has('success'))
             toastr.success("{{ Session::get('success') }}")
@@ -148,5 +160,6 @@
             toastr.error("{{ Session::get('error') }}")
         @endif
     </script>
+
   </body>
 </html>

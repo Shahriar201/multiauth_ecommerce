@@ -29,19 +29,19 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($brands as $key => $category)
+                @forelse ($brands as $key => $brand)
                     <tr>
                         <td>{{ ++$key }}</td>
-                        <td>{{ $brands->brands_name ?? '' }}</td>
-                        <td>{{ $brands->brands_name ?? '' }}</td>
-                        <td>{{ $brands->status == 1 ? 'Active' : 'Inactive' }}</td>
+                        <td>{{ $brand->brand_name ?? '' }}</td>
+                        <td>{{ $brand->brand_name ?? '' }}</td>
+                        <td>{{ $brand->status == 1 ? 'Active' : 'Inactive' }}</td>
                         <td>
                             <a href="#" title="Edit" data-toggle="modal" data-target='.update_modal' class="btn btn-sm btn-info"
-                                data-id="{{ $brands->id }}"
-                                data-name="{{ $brands->brands_name }}"
-                                data-status="{{ $brands->status }}"
+                                data-id="{{ $brand->id }}"
+                                data-name="{{ $brand->brand_name }}"
+                                data-status="{{ $brand->status }}"
                             >Edit</a>
-                            <a href="{{ route('delete.brands', $brands->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                            <a href="{{ route('delete.brand', $brand->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
                         </td>
                     </tr>
                 @empty
@@ -74,17 +74,17 @@
                     </ul>
                 </div>
             @endif
-            <form method="post" action="{{ route('store.brand') }}">
+            <form method="post" action="{{ route('store.brand') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="brand_name">Brand</label>
-                            <input type="text" class="form-control" name="brand_name" aria-describedby="emailHelp" placeholder="Enter Brand Name">
+                            <input type="text" class="form-control" name="brand_name" aria-describedby="emailHelp" placeholder="Enter Brand Name" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="status">Status</label>
-                            <select name="status" class="form-control col-md-12">
+                            <select name="status" class="form-control col-md-12" required>
                                 <option value="">Select Status</option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
@@ -92,11 +92,11 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="brand_logo">Brand Logo</label>
-                            <input type="file" class="form-control" name="brand_logo" aria-describedby="emailHelp" placeholder="Select Brand Logo">
+                            <input type="file" class="form-control" name="brand_logo" id="image" aria-describedby="emailHelp" placeholder="Select Brand Logo">
                         </div>
-                        <div class="form-group col-md-6">
-                            <img id="showImage" src="" style="width: 150px; height: 160px; border: 1px solid #000; object-fit: cover;">
-                        </div>
+                        {{-- <div class="form-group col-md-6">
+                            <img id="showImage" src="" style="width: 100px; height: 110px; border: 1px solid #000; object-fit: cover;">
+                        </div> --}}
                     </div>
                 </div>
                 <div class="modal-footer">

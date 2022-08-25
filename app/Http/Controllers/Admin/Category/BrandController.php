@@ -18,4 +18,33 @@ class BrandController extends Controller
 
         return view('admin.brand.brand', compact('brands'));
     }
+
+    public function storeBrand(Request $request) {
+        $validated = $request->validate([
+            'brand_name' => 'required|unique:brands,brand_name',
+            'status' => 'required'
+        ]);
+
+        // if ($validated->fails()) {
+        //     return redirect()->back()->with('error', $validated->errors()->all());
+        // }
+
+        try {
+            $brand = new Brand();
+            $brand->brand_name = $request->brand_name;
+            $brand->status = $request->status;
+            $brand->created_by = auth()->user()->id;
+            if($request->file('brand_logo')) {
+                $file = $request->file('brand_logo');
+                $fileName = date('Y-m-d-H-i').$file->getClientOriginalName();
+                $file->move('uploads/category/brand_logo/', $fileName);
+                $brand['brand_logo'] = $fileName;
+            }
+            $brand->save();
+
+            return redirect()->route('brand')->with('success', 'Brand Created Successfully!');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }
