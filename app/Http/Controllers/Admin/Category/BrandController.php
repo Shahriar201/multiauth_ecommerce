@@ -25,10 +25,6 @@ class BrandController extends Controller
             'status' => 'required'
         ]);
 
-        // if ($validated->fails()) {
-        //     return redirect()->back()->with('error', $validated->errors()->all());
-        // }
-
         try {
             $brand = new Brand();
             $brand->brand_name = $request->brand_name;
@@ -37,7 +33,7 @@ class BrandController extends Controller
             if($request->file('brand_logo')) {
                 $file = $request->file('brand_logo');
                 $fileName = date('Y-m-d-H-i').$file->getClientOriginalName();
-                $file->move('uploads/category/brand_logo/', $fileName);
+                $file->move(public_path().'/upload/category/brand_logo/', $fileName);
                 $brand['brand_logo'] = $fileName;
             }
             $brand->save();
