@@ -14,7 +14,7 @@ class BrandController extends Controller
     }
 
     public function brand() {
-        $brands = Brand::where('status', 1)->get();
+        $brands = Brand::all();
 
         return view('admin.brand.brand', compact('brands'));
     }
@@ -33,7 +33,7 @@ class BrandController extends Controller
             if($request->file('brand_logo')) {
                 $file = $request->file('brand_logo');
                 $fileName = date('Y-m-d-H-i').$file->getClientOriginalName();
-                $file->move(public_path().'/upload/category/brand_logo/', $fileName);
+                $file->move('public/uploads/category/brand_logo/', $fileName);
                 $brand['brand_logo'] = $fileName;
             }
             $brand->save();

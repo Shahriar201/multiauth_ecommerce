@@ -15,7 +15,7 @@ class CategoryController extends Controller
     }
 
     public function category() {
-        $categories = Category::where('status', 1)->get();
+        $categories = Category::all();
 
         return view('admin.category.category', compact('categories'));
     }

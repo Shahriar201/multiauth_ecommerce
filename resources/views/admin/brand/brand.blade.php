@@ -33,7 +33,9 @@
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td>{{ $brand->brand_name ?? '' }}</td>
-                        <td>{{ $brand->brand_name ?? '' }}</td>
+                        <td>
+                            <img style="width: 80px; height: 60px; object-fit: cover;" src="{{ (!empty($brand->brand_logo)) ? url('public/uploads/category/brand_logo/'.$brand->brand_logo):url('uploads/no_image.jpg') }}" alt="Brand Logo">
+                        </td>
                         <td>{{ $brand->status == 1 ? 'Active' : 'Inactive' }}</td>
                         <td>
                             <a href="#" title="Edit" data-toggle="modal" data-target='.update_modal' class="btn btn-sm btn-info"
