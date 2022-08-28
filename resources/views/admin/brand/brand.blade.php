@@ -34,13 +34,15 @@
                         <td>{{ ++$key }}</td>
                         <td>{{ $brand->brand_name ?? '' }}</td>
                         <td>
-                            <img style="width: 80px; height: 60px; object-fit: cover;" src="{{ (!empty($brand->brand_logo)) ? url('public/uploads/category/brand_logo/'.$brand->brand_logo):url('uploads/no_image.jpg') }}" alt="Brand Logo">
+                            {{-- <img style="width: 80px; height: 60px; object-fit: cover;" src="{{ (!empty($brand->brand_logo)) ? url('public/uploads/category/brand_logo/'.$brand->brand_logo):url('uploads/no_image.jpg') }}" alt="Brand Logo"> --}}
+                            <img src="{{ URL::to($brand->brand_logo) }}" style="width: 80px; height: 60px; object-fit: cover;"/>
                         </td>
                         <td>{{ $brand->status == 1 ? 'Active' : 'Inactive' }}</td>
                         <td>
                             <a href="#" title="Edit" data-toggle="modal" data-target='.update_modal' class="btn btn-sm btn-info"
                                 data-id="{{ $brand->id }}"
                                 data-name="{{ $brand->brand_name }}"
+                                data-logo="{{ $brand->brand_logo }}"
                                 data-status="{{ $brand->status }}"
                             >Edit</a>
                             <a href="{{ route('delete.brand', $brand->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
@@ -125,23 +127,25 @@
                 @csrf
                 <div class="modal-body">
                     <div class="row">
-                        <input type="hidden" id="id" class="id" name="id" value="">
                         <div class="form-group col-md-12">
                             <label for="brand_name">Brand</label>
-                            <input type="text" class="form-control brand_name" id="brand_name" name="brand_name" aria-describedby="emailHelp" placeholder="Enter Brand Name">
+                            <input type="text" class="form-control brand_name" name="brand_name" aria-describedby="emailHelp" placeholder="Enter Brand Name" required>
                         </div>
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="status">Status</label>
-                            <select name="status" class="form-control col-md-12 status" id="status">
+                            <select name="status" class="form-control col-md-12 status" required>
                                 <option value="">Select Status</option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-12">
-                            <label for="brand_name">Brand Logo</label>
-                            <input type="text" class="form-control" name="brand_name" aria-describedby="emailHelp" placeholder="Enter Brand Name">
+                        <div class="form-group col-md-6">
+                            <label for="brand_logo">Brand Logo</label>
+                            <input type="file" class="form-control brand_logo" name="brand_logo" id="image" aria-describedby="emailHelp" placeholder="Select Brand Logo">
                         </div>
+                        {{-- <div class="form-group col-md-6">
+                            <img id="showImage" src="" style="width: 100px; height: 110px; border: 1px solid #000; object-fit: cover;">
+                        </div> --}}
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -160,13 +164,15 @@
                 var button = $(event.relatedTarget)
 
                 var id = button.data('id');
-                var categoryName = button.data('name');
+                var brandName = button.data('name');
+                var brandLogo = button.data('logo');
                 var status = button.data('status');
 
                 var modal = $(this);
 
                 modal.find('.modal-body .id').val(id);
-                modal.find('.modal-body .category_name').val(categoryName);
+                modal.find('.modal-body .brand_name').val(brandName);
+                modal.find('.modal-body .brand_logo').val(brandLogo);
                 modal.find('.modal-body .status').val(status);
             });
         });

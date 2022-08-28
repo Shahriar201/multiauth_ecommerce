@@ -30,11 +30,15 @@ class BrandController extends Controller
             $brand->brand_name = $request->brand_name;
             $brand->status = $request->status;
             $brand->created_by = auth()->user()->id;
-            if($request->file('brand_logo')) {
-                $file = $request->file('brand_logo');
-                $fileName = date('Y-m-d-H-i').$file->getClientOriginalName();
-                $file->move('public/uploads/category/brand_logo/', $fileName);
-                $brand['brand_logo'] = $fileName;
+            $image = $request->file('brand_logo');
+            if ($image) {
+                $imageName = date('dmy_H_s_i');
+                $ext = strtolower($image->getClientOriginalName());
+                $imageFullName = $imageName.'.'.$ext;
+                $uploadPath = 'public/media/brand/';
+                $imageURL = $uploadPath.$imageFullName;
+                $image->move($uploadPath, $imageFullName);
+                $brand['brand_logo'] = $imageURL;
             }
             $brand->save();
 
