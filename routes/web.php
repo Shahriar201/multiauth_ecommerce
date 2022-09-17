@@ -41,6 +41,7 @@ Route::prefix('admin')->group(function() {
     // Brand Routes
     Route::get('/brand', [App\Http\Controllers\Admin\Category\BrandController::class, 'brand'])->name('brand');
     Route::post('/store/brand', [App\Http\Controllers\Admin\Category\BrandController::class, 'storeBrand'])->name('store.brand');
-    Route::post('/update/brand', [App\Http\Controllers\Admin\Category\BrandController::class, 'updateBrand'])->name('update.brand');
+    Route::get('/edit/brand/{id}', [App\Http\Controllers\Admin\Category\BrandController::class, 'editBrand'])->name('edit.brand');
+    Route::post('/update/brand/{id}', [App\Http\Controllers\Admin\Category\BrandController::class, 'updateBrand'])->name('update.brand');
     Route::get('/delete/brand/{id}', [App\Http\Controllers\Admin\Category\BrandController::class, 'deleteBrand'])->name('delete.brand');
 });

@@ -39,12 +39,7 @@
                         </td>
                         <td>{{ $brand->status == 1 ? 'Active' : 'Inactive' }}</td>
                         <td>
-                            <a href="#" title="Edit" data-toggle="modal" data-target='.update_modal' class="btn btn-sm btn-info"
-                                data-id="{{ $brand->id }}"
-                                data-name="{{ $brand->brand_name }}"
-                                data-logo="{{ $brand->brand_logo }}"
-                                data-status="{{ $brand->status }}"
-                            >Edit</a>
+                            <a href="{{ URL::to('admin/edit/brand/'.$brand->id) }}" title="Edit" class="btn btn-sm btn-info">Edit</a>
                             <a href="{{ route('delete.brand', $brand->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
                         </td>
                     </tr>
@@ -114,7 +109,7 @@
     <!-- End Create Modal -->
 
     <!-- Update Modal -->
-    <div class="modal fade update_modal" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="update_modal" aria-hidden="true"  data-keyboard="false" data-backdrop="static">
+    {{-- <div class="modal fade update_modal" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="update_modal" aria-hidden="true"  data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -143,9 +138,9 @@
                             <label for="brand_logo">Brand Logo</label>
                             <input type="file" class="form-control brand_logo" name="brand_logo" id="image" aria-describedby="emailHelp" placeholder="Select Brand Logo">
                         </div>
-                        {{-- <div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             <img id="showImage" src="" style="width: 100px; height: 110px; border: 1px solid #000; object-fit: cover;">
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -155,7 +150,7 @@
             </form>
           </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Update Modal -->
 
     <script>
