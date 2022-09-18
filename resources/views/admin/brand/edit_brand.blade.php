@@ -14,8 +14,8 @@
     </div>
 
     <div class="card pd-20 pd-sm-40">
-        <h6 class="card-body-title">Brand List
-            <a href="#" class="btn btn-warning btn-sm" style="float: right;" data-toggle="modal" data-target=".create_modal">Add New</a>
+        <h6 class="card-body-title">Edit Brand
+            <a href="{{ route('brand') }}" class="btn btn-warning btn-sm" style="float: right;">Brand List</a>
         </h6>
         <div class="table-wrapper">
             @if ($errors->any())
