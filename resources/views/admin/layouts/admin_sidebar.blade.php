@@ -22,7 +22,7 @@
         </a>
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{ route('category') }}" class="nav-link">Category</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Sub Category</a></li>
+          <li class="nav-item"><a href="{{ route('sub.category') }}" class="nav-link">Sub Category</a></li>
           <li class="nav-item"><a href="{{ route('brand') }}" class="nav-link">Brand</a></li>
         </ul>
       </div><!-- sl-sideleft-menu -->
