@@ -50,5 +50,5 @@ Route::prefix('admin')->group(function() {
     Route::post('store/sub/category', [App\Http\Controllers\Admin\Category\SubCateoryController::class, 'storeSubCategory'])->name('store.subCategory');
     Route::get('edit/sub/category/{id}', [App\Http\Controllers\Admin\Category\SubCateoryController::class, 'editSubCategory'])->name('edit.subCategory');
     Route::post('update/sub/category/{id}', [App\Http\Controllers\Admin\Category\SubCateoryController::class, 'updateSubCategory'])->name('update.SubCategory');
-    Route::get('delete/brand/{id}', [App\Http\Controllers\Admin\Category\BrandController::class, 'deleteBrand'])->name('delete.brand');
+    Route::get('delete/sub/category/{id}', [App\Http\Controllers\Admin\Category\SubCateoryController::class, 'deleteSubCategory'])->name('delete.SubCategory');
 });

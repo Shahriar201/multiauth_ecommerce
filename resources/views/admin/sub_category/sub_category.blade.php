@@ -37,7 +37,7 @@
                         <td>{{ $subCategory->status == 1 ? 'Active' : 'Inactive' }}</td>
                         <td>
                             <a href="{{ route('edit.subCategory', $subCategory->id) }}" title="Edit" class="btn btn-sm btn-info">Edit</a>
-                            <a href="#" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                            <a href="{{ route('delete.SubCategory', $subCategory->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
                         </td>
                     </tr>
                 @empty
@@ -106,62 +106,5 @@
         </div>
     </div>
     <!-- End Create Modal -->
-
-    <!-- Update Modal -->
-    <div class="modal fade update_modal" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="update_modal" aria-hidden="true"  data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form method="post" action="{{ route('update.category') }}">
-                @csrf
-                <div class="modal-body">
-                    <div class="row">
-                        <input type="hidden" id="id" class="id" name="id" value="">
-                        <div class="form-group col-md-12">
-                            <label for="category_name">Category</label>
-                            <input type="text" class="form-control category_name" id="category_name" name="category_name" aria-describedby="emailHelp" placeholder="Enter Category Name">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="status">Status</label>
-                            <select name="status" class="form-control col-md-12 status" id="status">
-                                <option value="">Select Status</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Update</button>
-                </div>
-            </form>
-          </div>
-        </div>
-    </div>
-    <!-- End Update Modal -->
-
-    <script>
-        $(document).ready(function() {
-            $('#update_modal').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget)
-
-                var id = button.data('id');
-                var categoryName = button.data('name');
-                var status = button.data('status');
-
-                var modal = $(this);
-
-                modal.find('.modal-body .id').val(id);
-                modal.find('.modal-body .category_name').val(categoryName);
-                modal.find('.modal-body .status').val(status);
-            });
-        });
-    </script>
 
 @endsection
