@@ -51,4 +51,7 @@ Route::prefix('admin')->group(function() {
     Route::get('edit/sub/category/{id}', [App\Http\Controllers\Admin\Category\SubCateoryController::class, 'editSubCategory'])->name('edit.subCategory');
     Route::post('update/sub/category/{id}', [App\Http\Controllers\Admin\Category\SubCateoryController::class, 'updateSubCategory'])->name('update.SubCategory');
     Route::get('delete/sub/category/{id}', [App\Http\Controllers\Admin\Category\SubCateoryController::class, 'deleteSubCategory'])->name('delete.SubCategory');
+
+    // Coupon Routes
+    Route::get('coupons', [App\Http\Controllers\Admin\CouponController::class, 'coupons'])->name('coupons');
 });
