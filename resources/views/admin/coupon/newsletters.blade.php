@@ -15,7 +15,7 @@
 
     <div class="card pd-20 pd-sm-40">
         <h6 class="card-body-title">Newsletters List
-            <a href="#" class="btn btn-warning btn-sm" style="float: right;" data-toggle="modal" data-target=".create_modal">Add New</a>
+            <a href="#" class="btn btn-danger btn-sm" style="float: right;" id="delete">Delete All</a>
         </h6>
         <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
@@ -32,7 +32,7 @@
                     <tr>
                         <td><input type="checkbox"> {{ ++$key }}</td>
                         <td>{{ $newsletter->email ?? '' }}</td>
-                        <td>{{ $newsletter->created_at ?? '' }}</td>
+                        <td>{{ \Carbon\Carbon::parse($newsletter->created_at)->diffForhumans() }}</td>
                         <td>
                             <a href="{{ route('delete.newsletter', $newsletter->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
                         </td>
