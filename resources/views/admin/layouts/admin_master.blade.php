@@ -37,18 +37,13 @@
     <link href="{{ asset('public/backend') }}//lib/rickshaw/rickshaw.min.css" rel="stylesheet">
     <link href="{{ asset('public/backend') }}/lib/datatables/jquery.dataTables.css" rel="stylesheet">
     <link href="{{ asset('public/backend') }}/lib/select2/css/select2.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"> --}}
 
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ asset('public/backend') }}//css/starlight.css">
 
     <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('public/backend/lib/jquery/jquery.js') }}"></script>
-    {{-- <script src="{{ asset('public/backend/lib/jquery-ui/jquery-ui.min.js') }}"></script> --}}
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    {{-- <script src="{{ asset('public/backend/lib/toastr/toastr.min.js') }}"></script>
-    <script src="{{ asset('public/backend/lib/toastr/toastr.min.css') }}"></script> --}}
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     <link rel="stylesheet" href="{{ asset('public/backend/lib/toastr/toastr.css') }}">
   </head>
 
@@ -116,9 +111,8 @@
     <script src="{{ asset('public/backend') }}/lib/datatables/jquery.dataTables.js"></script>
     <script src="{{ asset('public/backend') }}/lib/datatables-responsive/dataTables.responsive.js"></script>
     <script src="{{ asset('public/backend') }}/lib/select2/js/select2.min.js"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+
     <script src="{{ asset('public/backend/lib/toastr/toastr.min.js') }}"></script>
-    {{-- <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script> --}}
     <script src="{{ asset('public/backend/lib/sweetalert/sweetalert.min.js') }}"></script>
 
     <script>

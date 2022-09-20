@@ -15,6 +15,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend') }}/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend') }}/styles/responsive.css">
 
+<script src="{{ asset('public/backend/lib/jquery/jquery.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('public/backend/lib/toastr/toastr.css') }}">
 </head>
 
 <body>
@@ -169,6 +171,19 @@
 <script src="{{ asset('public/frontend') }}/plugins/slick-1.8.0/slick.js"></script>
 <script src="{{ asset('public/frontend') }}/plugins/easing/easing.js"></script>
 <script src="{{ asset('public/frontend') }}/js/custom.js"></script>
+
+<script src="{{ asset('public/backend/lib/toastr/toastr.min.js') }}"></script>
+<script src="{{ asset('public/backend/lib/sweetalert/sweetalert.min.js') }}"></script>
+
+<script>
+    @if (Session::has('success'))
+        toastr.success("{{ Session::get('success') }}")
+    @endif
+    @if (Session::has('error'))
+        toastr.error("{{ Session::get('error') }}")
+    @endif
+</script>
+
 </body>
 
 </html>
