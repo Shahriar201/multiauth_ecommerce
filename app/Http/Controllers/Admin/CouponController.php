@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class CouponController extends Controller
 {
     public function coupons() {
-        $coupons = DB::table('coupons')->where('status', 1)->get();
+        $coupons = DB::table('coupons')->get();
 
         return view('admin.coupon.coupons', compact('coupons'));
     }
@@ -40,5 +40,27 @@ class CouponController extends Controller
         $coupon = DB::table('coupons')->where('id', $id)->first();
 
         return view('admin.coupon.edit_coupon', compact('coupon'));
+    }
+
+    public function updateCoupon(Request $request, $id) {
+        $request->validate([
+            'coupon' => 'required',
+            'discount' => 'required',
+            'status' => 'required|min:0|max:1',
+        ]);
+
+        try {
+            $requestData = [
+                'coupon' => $request->coupon,
+                'discount' => $request->discount,
+                'status' => $request->status,
+            ];
+
+            DB::table('coupons')->where('id', $id)->update($requestData);
+
+            return redirect()->route('coupons')->with('success', 'Coupon Updated Successfully!');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }
