@@ -31,16 +31,12 @@
                 @forelse ($coupons as $key => $coupon)
                     <tr>
                         <td>{{ ++$key }}</td>
-                        <td>{{ $coupons->coupon ?? '' }}</td>
-                        <td>{{ $coupons->discount ?? '' }}</td>
-                        <td>{{ $category->status == 1 ? 'Active' : 'Inactive' }}</td>
+                        <td>{{ $coupon->coupon ?? '' }}</td>
+                        <td>{{ $coupon->discount ?? '' }}</td>
+                        <td>{{ $coupon->status == 1 ? 'Active' : 'Inactive' }}</td>
                         <td>
-                            <a href="#" title="Edit" data-toggle="modal" data-target='.update_modal' class="btn btn-sm btn-info"
-                                data-id="{{ $category->id }}"
-                                data-name="{{ $category->category_name }}"
-                                data-status="{{ $category->status }}"
-                            >Edit</a>
-                            <a href="{{ route('delete.category', $category->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                            <a href="#" title="Edit" data-toggle="modal" data-target='.update_modal' class="btn btn-sm btn-info" >Edit</a>
+                            <a href="#" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
                         </td>
                     </tr>
                 @empty
@@ -73,21 +69,21 @@
                     </ul>
                 </div>
             @endif
-            <form method="post" action="#">
+            <form method="post" action="{{ route('store.coupon') }}">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="coupon">Coupon</label>
-                            <input type="text" class="form-control" name="coupon" aria-describedby="emailHelp" placeholder="Enter Coupon Code">
+                            <input type="text" class="form-control" name="coupon" aria-describedby="emailHelp" placeholder="Enter Coupon Code" required>
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="coupon">Coupon Discount</label>
-                            <input type="text" class="form-control" name="discount" aria-describedby="emailHelp" placeholder="Enter Coupon Discount">
+                            <label for="coupon">Coupon Discount (%)</label>
+                            <input type="text" class="form-control" name="discount" aria-describedby="emailHelp" placeholder="Enter Coupon Discount" required>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="status">Status</label>
-                            <select name="status" class="form-control col-md-12">
+                            <select name="status" class="form-control col-md-12" required>
                                 <option value="">Select Status</option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
