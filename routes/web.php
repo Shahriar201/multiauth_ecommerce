@@ -23,6 +23,9 @@ Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Frontend Routes
+Route::post('store/newsletter', [App\Http\Controllers\FrontendController::class, 'storeNewsletter'])->name('store.newsletter');
+
 // Admin Routes
 Route::get('/admin', [App\Http\Controllers\Admin\AdminController::class, 'showLoginForm']);
 Route::get('/admin/home', [App\Http\Controllers\Admin\AdminController::class, 'adminIndex'])->name('admin.home');
