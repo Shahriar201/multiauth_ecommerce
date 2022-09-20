@@ -13,6 +13,7 @@
             <span class="menu-item-label">Cards &amp; Widgets</span>
           </div>
         </a> --}}
+        {{-- Category Menu --}}
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
@@ -26,6 +27,7 @@
           <li class="nav-item"><a href="{{ route('brand') }}" class="nav-link">Brand</a></li>
         </ul>
 
+        {{-- Coupon Menu --}}
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
@@ -35,6 +37,18 @@
         </a>
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{ route('coupons') }}" class="nav-link">Coupon</a></li>
+        </ul>
+
+        {{-- Others Menu --}}
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <span class="menu-item-label">Others</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div>
+        </a>
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{ route('newsletters') }}" class="nav-link">Newsletter</a></li>
         </ul>
       </div><!-- sl-sideleft-menu -->
 

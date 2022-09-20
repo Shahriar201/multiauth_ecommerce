@@ -61,4 +61,7 @@ Route::prefix('admin')->group(function() {
     Route::get('edit/coupon/{id}', [App\Http\Controllers\Admin\CouponController::class, 'editCoupon'])->name('edit.coupon');
     Route::post('update/coupon/{id}', [App\Http\Controllers\Admin\CouponController::class, 'updateCoupon'])->name('update.coupon');
     Route::get('delete/coupon/{id}', [App\Http\Controllers\Admin\CouponController::class, 'deleteCoupon'])->name('delete.coupon');
+
+    // Newsletter List Routes
+    Route::get('newsletters', [App\Http\Controllers\Admin\NewsletterController::class, 'newsletters'])->name('newsletters');
 });
