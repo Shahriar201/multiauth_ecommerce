@@ -55,4 +55,7 @@ Route::prefix('admin')->group(function() {
     // Coupon Routes
     Route::get('coupons', [App\Http\Controllers\Admin\CouponController::class, 'coupons'])->name('coupons');
     Route::post('store/coupon', [App\Http\Controllers\Admin\CouponController::class, 'storeCoupon'])->name('store.coupon');
+    Route::get('edit/coupon/{id}', [App\Http\Controllers\Admin\CouponController::class, 'editCoupon'])->name('edit.coupon');
+    Route::post('update/coupon/{id}', [App\Http\Controllers\Admin\CouponController::class, 'updateCoupon'])->name('update.coupon');
+    Route::get('delete/coupon/{id}', [App\Http\Controllers\Admin\CouponController::class, 'deleteCoupon'])->name('delete.coupon');
 });

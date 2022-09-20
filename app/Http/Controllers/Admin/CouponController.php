@@ -35,4 +35,10 @@ class CouponController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function editCoupon($id) {
+        $coupon = DB::table('coupons')->where('id', $id)->first();
+
+        return view('admin.coupon.edit_coupon', compact('coupon'));
+    }
 }

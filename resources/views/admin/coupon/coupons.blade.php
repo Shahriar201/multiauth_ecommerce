@@ -35,8 +35,8 @@
                         <td>{{ $coupon->discount ?? '' }}</td>
                         <td>{{ $coupon->status == 1 ? 'Active' : 'Inactive' }}</td>
                         <td>
-                            <a href="#" title="Edit" data-toggle="modal" data-target='.update_modal' class="btn btn-sm btn-info" >Edit</a>
-                            <a href="#" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                            <a href="{{ route('edit.coupon', $coupon->id) }}" title="Edit" class="btn btn-sm btn-info" >Edit</a>
+                            <a href="{{ route('delete.coupon', $coupon->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
                         </td>
                     </tr>
                 @empty
