@@ -63,4 +63,10 @@ class CouponController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function deleteCoupon($id) {
+        DB::table('coupons')->where('id', $id)->delete();
+
+        return redirect()->back()->with('success', 'Coupon Deleted Successfully!');
+    }
 }
