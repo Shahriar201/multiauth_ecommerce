@@ -37,6 +37,11 @@ class CreateProductsTable extends Migration
             $table->string('image_three')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();
+
+            // foreign key
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('subcategory_id')->references('id')->on('sub_categories');
+            $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
 

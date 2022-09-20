@@ -62,6 +62,10 @@ Route::prefix('admin')->group(function() {
     Route::post('update/coupon/{id}', [App\Http\Controllers\Admin\CouponController::class, 'updateCoupon'])->name('update.coupon');
     Route::get('delete/coupon/{id}', [App\Http\Controllers\Admin\CouponController::class, 'deleteCoupon'])->name('delete.coupon');
 
+    // Product Routes
+    Route::get('product/all', [App\Http\Controllers\Admin\ProductController::class, 'productAll'])->name('all.product');
+    Route::get('product/add', [App\Http\Controllers\Admin\ProductController::class, 'productAdd'])->name('add.product');
+
     // Newsletter List Routes
     Route::get('newsletters', [App\Http\Controllers\Admin\NewsletterController::class, 'newsletters'])->name('newsletters');
     Route::get('delete/newsletter/{id}', [App\Http\Controllers\Admin\NewsletterController::class, 'deleteNewsletter'])->name('delete.newsletter');
