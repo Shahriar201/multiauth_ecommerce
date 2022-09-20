@@ -13,4 +13,10 @@ class NewsletterController extends Controller
 
         return view('admin.coupon.newsletters', compact('newsletters'));
     }
+
+    public function deleteNewsletter($id) {
+        DB::table('newsletters')->where('id', $id)->delete();
+
+        return redirect()->back()->with('success', 'Newsletter Deleted Successfully!');
+    }
 }

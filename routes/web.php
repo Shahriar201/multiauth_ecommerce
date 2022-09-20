@@ -64,4 +64,5 @@ Route::prefix('admin')->group(function() {
 
     // Newsletter List Routes
     Route::get('newsletters', [App\Http\Controllers\Admin\NewsletterController::class, 'newsletters'])->name('newsletters');
+    Route::get('delete/newsletter/{id}', [App\Http\Controllers\Admin\NewsletterController::class, 'deleteNewsletter'])->name('delete.newsletter');
 });

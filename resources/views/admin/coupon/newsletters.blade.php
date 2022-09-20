@@ -34,7 +34,7 @@
                         <td>{{ $newsletter->email ?? '' }}</td>
                         <td>{{ $newsletter->created_at ?? '' }}</td>
                         <td>
-                            <a href="#" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                            <a href="{{ route('delete.newsletter', $newsletter->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete">Delete</a>
                         </td>
                     </tr>
                 @empty
