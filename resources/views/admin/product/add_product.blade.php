@@ -64,6 +64,18 @@
                 </select>
               </div>
             </div><!-- col-4 -->
+            <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label">Product Size: <span class="tx-danger">*</span></label><br>
+                  <input class="form-control" type="text" name="product_size" id="size" data-role="tagsinput">
+                </div>
+            </div><!-- col-4 -->
+            <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label">Product Color: <span class="tx-danger">*</span></label><br>
+                  <input class="form-control" type="text" name="product_color" id="size" data-role="tagsinput">
+                </div>
+            </div><!-- col-4 -->
           </div><!-- row -->
 
           <div class="form-layout-footer">

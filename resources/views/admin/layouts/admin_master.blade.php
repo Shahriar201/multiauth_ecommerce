@@ -45,6 +45,9 @@
     <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('public/backend/lib/jquery/jquery.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('public/backend/lib/toastr/toastr.css') }}">
+
+    <!-- Tagsinput -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
 
   <body>
@@ -114,6 +117,9 @@
 
     <script src="{{ asset('public/backend/lib/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('public/backend/lib/sweetalert/sweetalert.min.js') }}"></script>
+
+    <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
          $(document).on("click", "#delete", function(e){
