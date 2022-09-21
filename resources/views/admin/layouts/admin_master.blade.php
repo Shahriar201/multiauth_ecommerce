@@ -48,6 +48,8 @@
 
     <!-- Tagsinput -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Summernote -->
+    <link rel="stylesheet" href="{{ asset('public/backend/lib/summernote/summernote-bs4.css') }}">
   </head>
 
   <body>
@@ -120,6 +122,8 @@
 
     <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ asset('public/backend/lib/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ asset('public/backend/lib/medium-editor/medium-editor.js') }}"></script>
 
     <script>
          $(document).on("click", "#delete", function(e){
@@ -162,6 +166,20 @@
             toastr.error("{{ Session::get('error') }}")
         @endif
     </script>
+    <script>
+        $(function(){
+          'use strict';
+
+          // Inline editor
+          var editor = new MediumEditor('.editable');
+
+          // Summernote editor
+          $('#summernote').summernote({
+            height: 150,
+            tooltip: false
+          })
+        });
+      </script>
 
   </body>
 </html>

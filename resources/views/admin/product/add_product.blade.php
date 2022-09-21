@@ -76,6 +76,52 @@
                   <input class="form-control" type="text" name="product_color" id="size" data-role="tagsinput">
                 </div>
             </div><!-- col-4 -->
+            <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label">Selling Price: <span class="tx-danger">*</span></label><br>
+                  <input class="form-control" type="text" name="selling_price" placeholder="Selling price">
+                </div>
+            </div><!-- col-4 -->
+            <div class="col-lg-12">
+                <div class="form-group">
+                  <label class="form-control-label">Product Details: <span class="tx-danger">*</span></label><br>
+                  <input class="form-control" type="text" id="summernote" name="product_details">
+                </div>
+            </div><!-- col-4 -->
+            <div class="col-lg-12">
+                <div class="form-group">
+                  <label class="form-control-label">Video Link: <span class="tx-danger">*</span></label><br>
+                  <input class="form-control" type="text" name="video_link" placeholder="Video link">
+                </div>
+            </div><!-- col-4 -->
+            <div class="col-lg-4">
+                <label class="form-control-label">Image One (Main Thumbnail): <span class="tx-danger">*</span></label><br>
+                <label class="custom-file">
+                    <input type="file" id="file" class="custom-file-input">
+                    <span class="custom-file-control"></span>
+                </label>
+            </div><!-- col-4 -->
+            <div class="col-lg-4">
+                <label class="form-control-label">Image One (Main Thumbnail): <span class="tx-danger">*</span></label><br>
+                <label class="custom-file">
+                    <input type="file" id="file" class="custom-file-input" name="image_one">
+                    <span class="custom-file-control"></span>
+                </label>
+            </div><!-- col-4 -->
+            <div class="col-lg-4">
+                <label class="form-control-label">Image Two: <span class="tx-danger">*</span></label><br>
+                <label class="custom-file">
+                    <input type="file" id="file" class="custom-file-input" name="image_two">
+                    <span class="custom-file-control"></span>
+                </label>
+            </div><!-- col-4 -->
+            <div class="col-lg-4">
+                <label class="form-control-label">Image Three: <span class="tx-danger">*</span></label><br>
+                <label class="custom-file">
+                    <input type="file" id="file" class="custom-file-input" name="image_three">
+                    <span class="custom-file-control"></span>
+                </label>
+            </div><!-- col-4 -->
           </div><!-- row -->
 
           <div class="form-layout-footer">
