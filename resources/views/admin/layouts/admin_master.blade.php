@@ -37,13 +37,13 @@
     <link href="{{ asset('public/backend') }}//lib/rickshaw/rickshaw.min.css" rel="stylesheet">
     <link href="{{ asset('public/backend') }}/lib/datatables/jquery.dataTables.css" rel="stylesheet">
     <link href="{{ asset('public/backend') }}/lib/select2/css/select2.min.css" rel="stylesheet">
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"> --}}
 
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ asset('public/backend') }}//css/starlight.css">
 
     <!-- jQuery UI 1.11.4 -->
-    <script src="{{ asset('public/backend/lib/jquery/jquery.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    {{-- <script src="{{ asset('public/backend/lib/jquery/jquery.js') }}"></script> --}}
     <link rel="stylesheet" href="{{ asset('public/backend/lib/toastr/toastr.css') }}">
 
     <!-- Tagsinput -->
@@ -96,7 +96,8 @@
         });
     </script>
 
-    <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script>
+    {{-- <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('public/backend') }}/lib/popper.js/popper.js"></script>
     <script src="{{ asset('public/backend') }}/lib/bootstrap/bootstrap.js"></script>
     <script src="{{ asset('public/backend') }}/lib/jquery-ui/jquery-ui.js"></script>
@@ -120,8 +121,8 @@
     <script src="{{ asset('public/backend/lib/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('public/backend/lib/sweetalert/sweetalert.min.js') }}"></script>
 
-    <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script> --}}
+
     <script src="{{ asset('public/backend/lib/summernote/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('public/backend/lib/medium-editor/medium-editor.js') }}"></script>
 

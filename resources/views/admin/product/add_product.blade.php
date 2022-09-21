@@ -36,12 +36,11 @@
                 <div class="col-lg-4">
                 <div class="form-group mg-b-10-force">
                     <label class="form-control-label">Category: <span class="tx-danger">*</span></label>
-                    <select class="form-control select2" data-placeholder="Choose country">
-                    <option label="Choose country"></option>
-                    <option value="USA">United States of America</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="China">China</option>
-                    <option value="Japan">Japan</option>
+                    <select class="form-control select2" data-placeholder="Select Category" id="category_id" name="category_id">
+                        <option label="Select Category"></option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 </div><!-- col-4 -->
@@ -57,11 +56,10 @@
                 <div class="form-group mg-b-10-force">
                     <label class="form-control-label">Brand: <span class="tx-danger">*</span></label>
                     <select class="form-control select2" data-placeholder="Choose country">
-                    <option label="Choose country"></option>
-                    <option value="USA">United States of America</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="China">China</option>
-                    <option value="Japan">Japan</option>
+                    <option label="Select Brand"></option>
+                        @foreach ($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 </div><!-- col-4 -->
@@ -167,5 +165,17 @@
         </form>
     </div><!-- card -->
 </div
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{{-- get category wise sub-category --}}
+<script type="text/javascript">
+    $(function() {
+        $(document).on('change', '#category_id', function() {
+            console.log('==============================')
+            var category_id = $(this).val();
+            alert(category_id);
+        });
+    });
+</script>
 
 @endsection
