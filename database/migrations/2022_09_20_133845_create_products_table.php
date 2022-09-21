@@ -29,6 +29,7 @@ class CreateProductsTable extends Migration
             $table->string('video_link')->nullable();
             $table->integer('main_slider')->nullable();
             $table->integer('hot_deal')->nullable();
+            $table->integer('best_rated')->nullable();
             $table->integer('mid_slider')->nullable();
             $table->integer('hot_new')->nullable();
             $table->integer('trend')->nullable();
