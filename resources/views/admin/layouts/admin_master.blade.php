@@ -42,8 +42,7 @@
     <link rel="stylesheet" href="{{ asset('public/backend') }}//css/starlight.css">
 
     <!-- jQuery UI 1.11.4 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    {{-- <script src="{{ asset('public/backend/lib/jquery/jquery.js') }}"></script> --}}
+    <script src="{{ asset('public/backend/lib/jquery/jquery.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('public/backend/lib/toastr/toastr.css') }}">
 
     <!-- Tagsinput -->

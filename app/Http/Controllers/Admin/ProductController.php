@@ -18,4 +18,10 @@ class ProductController extends Controller
 
         return view('admin.product.add_product', compact('categories', 'brands'));
     }
+
+    public function getSubcategory($category_id) {
+        $subCategory = DB::table('sub_categories')->where('category_id', $category_id)->get();
+
+        return json_encode($subCategory);
+    }
 }
