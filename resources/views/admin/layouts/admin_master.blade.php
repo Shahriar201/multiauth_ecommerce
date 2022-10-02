@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="{{ asset('public/backend/lib/toastr/toastr.css') }}">
 
     <!-- Tagsinput -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     <!-- Summernote -->
     <link rel="stylesheet" href="{{ asset('public/backend/lib/summernote/summernote-bs4.css') }}">
   </head>
@@ -96,7 +96,7 @@
     </script>
 
     {{-- <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
     <script src="{{ asset('public/backend') }}/lib/popper.js/popper.js"></script>
     <script src="{{ asset('public/backend') }}/lib/bootstrap/bootstrap.js"></script>
     <script src="{{ asset('public/backend') }}/lib/jquery-ui/jquery-ui.js"></script>
@@ -120,7 +120,7 @@
     <script src="{{ asset('public/backend/lib/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('public/backend/lib/sweetalert/sweetalert.min.js') }}"></script>
 
-    {{-- <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script> --}}
+    <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script>
 
     <script src="{{ asset('public/backend/lib/summernote/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('public/backend/lib/medium-editor/medium-editor.js') }}"></script>
