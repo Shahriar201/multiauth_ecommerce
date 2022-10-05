@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Image;
 
 class ProductController extends Controller
 {
@@ -20,45 +21,41 @@ class ProductController extends Controller
     }
 
     public function productStore(Request $request) {
-        $requestData = [
-            'product_name' => $request->product_name,
-            'product_code' => $request->product_code,
-            'product_quantity' => $request->product_quantity,
-            'category_id' => $request->category_id,
-            'subcategory_id' => $request->subcategory_id,
-            'brand_id' => $request->brand_id,
-            'product_size' => $request->product_size,
-            'selling_price' => $request->selling_price,
-            'product_details' => $request->product_details,
-            'video_link' => $request->video_link,
-            'status' => $request->status,
-            'main_slider' => $request->main_slider,
-            'hot_deal' => $request->hot_deal,
-            'best_rated' => $request->best_rated,
-            'mid_slider' => $request->mid_slider,
-            'hot_new' => $request->hot_new,
-            'trend' => $request->trend,
-        ];
+            $data['product_name'] = $request->product_name;
+            $data['product_code'] = $request->product_code;
+            $data['product_quantity'] = $request->product_quantity;
+            $data['category_id'] = $request->category_id;
+            $data['subcategory_id'] = $request->subcategory_id;
+            $data['brand_id'] = $request->brand_id;
+            $data['product_size'] = $request->product_size;
+            $data['product_color'] = $request->product_color;
+            $data['selling_price'] = $request->selling_price;
+            $data['product_details'] = $request->product_details;
+            $data['video_link'] = $request->video_link;
+            $data['status'] = $request->status;
+            $data['main_slider'] = $request->main_slider;
+            $data['hot_deal'] = $request->hot_deal;
+            $data['best_rated'] = $request->best_rated;
+            $data['mid_slider'] = $request->mid_slider;
+            $data['hot_new'] = $request->hot_new;
+            $data['trend'] = $request->trend;
 
         $image_one = $request->image_one;
         $image_two = $request->image_two;
         $image_three = $request->image_three;
 
-        if ($image_one && $image_two) {
+        if ($image_one) {
             $image_one_name = hexdec(uniqid()).'.'.$image_one->getClientOriginalName();
-            $image_two_name = hexdec(uniqid()).'.'.$image_two->getClientOriginalName();
-            $uploadPath = 'public/media/product/';
+            Image::make($image_one)->resize(300, 300)->save('public/media/product/'.$image_one_name);
+            $data['image_one'] = 'public/media/product/'.$image_one_name;
 
-            $image_one->move($uploadPath, $image_one_name);
-            $image_two->move($uploadPath, $image_two_name);
-
-            $product['image_one'] = $image_one_name;
-            $product['image_two'] = $image_two_name;
+            $product = DB::table('products')->insert($data);
+            return redirect()->back()->with('success', 'Product Inserted Successfully!');
         }
 
-        DB::table('products')->insert($requestData);
+        //DB::table('products')->insert($requestData);
 
-        return response()->back()->with('success', 'Product Inserted Successfully!');
+        return redirect()->back()->with('success', 'Product Inserted Successfully!');
     }
 
     public function getSubcategory($category_id) {
