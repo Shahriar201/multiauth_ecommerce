@@ -21,6 +21,21 @@ class ProductController extends Controller
     }
 
     public function productStore(Request $request) {
+        $request->validate([
+            'product_name' => 'required',
+            'product_code' => 'required',
+            'product_quantity' => 'required',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
+            'brand_id' => 'required',
+            'image_one' => 'required',
+            'image_two' => 'required',
+            'image_three' => 'required',
+            'status' => 'required',
+        ]);
+
+        DB::beginTransaction();
+        try {
             $data['product_name'] = $request->product_name;
             $data['product_code'] = $request->product_code;
             $data['product_quantity'] = $request->product_quantity;
@@ -41,31 +56,37 @@ class ProductController extends Controller
             $data['trend'] = $request->trend;
             $data['created_at'] = \Carbon\Carbon::now();
 
-        $image_one = $request->image_one;
-        $image_two = $request->image_two;
-        $image_three = $request->image_three;
+            $image_one = $request->image_one;
+            $image_two = $request->image_two;
+            $image_three = $request->image_three;
 
-        // image store using laravel image intervention
-        if ($image_one && $image_two) {
-            $image_one_name = hexdec(uniqid()).'.'.$image_one->getClientOriginalName();
-            Image::make($image_one)->resize(300, 300)->save('public/media/product/'.$image_one_name);
-            $data['image_one'] = 'public/media/product/'.$image_one_name;
+            // image store using laravel image intervention
+            if ($image_one && $image_two) {
+                $image_one_name = hexdec(uniqid()).'.'.$image_one->getClientOriginalName();
+                Image::make($image_one)->resize(300, 300)->save('public/media/product/'.$image_one_name);
+                $data['image_one'] = 'public/media/product/'.$image_one_name;
 
-            $image_two_name = hexdec(uniqid()).'.'.$image_two->getClientOriginalName();
-            Image::make($image_two)->resize(300, 300)->save('public/media/product/'.$image_two_name);
-            $data['image_two'] = 'public/media/product/'.$image_two_name;
+                $image_two_name = hexdec(uniqid()).'.'.$image_two->getClientOriginalName();
+                Image::make($image_two)->resize(300, 300)->save('public/media/product/'.$image_two_name);
+                $data['image_two'] = 'public/media/product/'.$image_two_name;
 
-            $image_three_name = hexdec(uniqid()).'.'.$image_three->getClientOriginalName();
-            Image::make($image_three)->resize(300, 300)->save('public/media/product/'.$image_three_name);
-            $data['image_three'] = 'public/media/product/'.$image_three_name;
+                $image_three_name = hexdec(uniqid()).'.'.$image_three->getClientOriginalName();
+                Image::make($image_three)->resize(300, 300)->save('public/media/product/'.$image_three_name);
+                $data['image_three'] = 'public/media/product/'.$image_three_name;
 
-            DB::table('products')->insert($data);
+                DB::table('products')->insert($data);
+                DB::commit();
+
+                return redirect()->back()->with('success', 'Product Inserted Successfully!');
+            }
+
+            //DB::table('products')->insert($requestData);
+
             return redirect()->back()->with('success', 'Product Inserted Successfully!');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return $e->getMessage();
         }
-
-        //DB::table('products')->insert($requestData);
-
-        return redirect()->back()->with('success', 'Product Inserted Successfully!');
     }
 
     public function getSubcategory($category_id) {

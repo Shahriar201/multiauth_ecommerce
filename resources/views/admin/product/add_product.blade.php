@@ -18,25 +18,25 @@
                     <div class="col-lg-4">
                     <div class="form-group">
                         <label class="form-control-label">Product Name: <span class="tx-danger">*</span></label>
-                        <input class="form-control" type="text" name="product_name" placeholder="Enter product name">
+                        <input class="form-control" type="text" name="product_name" placeholder="Enter product name" required>
                     </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-4">
                     <div class="form-group">
                         <label class="form-control-label">Product Code: <span class="tx-danger">*</span></label>
-                        <input class="form-control" type="text" name="product_code" placeholder="Enter product code">
+                        <input class="form-control" type="text" name="product_code" placeholder="Enter product code" required>
                     </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-4">
                     <div class="form-group">
                         <label class="form-control-label">Product Quantity: <span class="tx-danger">*</span></label>
-                        <input class="form-control" type="text" name="product_quantity" placeholder="Enter product quantity">
+                        <input class="form-control" type="text" name="product_quantity" placeholder="Enter product quantity" required>
                     </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-4">
                     <div class="form-group mg-b-10-force">
                         <label class="form-control-label">Category: <span class="tx-danger">*</span></label>
-                        <select class="form-control select2" data-placeholder="Select Category" id="category_id" name="category_id">
+                        <select class="form-control select2" data-placeholder="Select Category" id="category_id" name="category_id" required>
                             <option label="Select Category"></option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
@@ -47,7 +47,7 @@
                     <div class="col-lg-4">
                     <div class="form-group mg-b-10-force">
                         <label class="form-control-label">Sub Category: <span class="tx-danger">*</span></label>
-                        <select class="form-control select2" data-placeholder="Choose country" name="subcategory_id">
+                        <select class="form-control select2" data-placeholder="Choose country" name="subcategory_id" required>
 
                         </select>
                     </div>
@@ -55,7 +55,7 @@
                     <div class="col-lg-4">
                     <div class="form-group mg-b-10-force">
                         <label class="form-control-label">Brand: <span class="tx-danger">*</span></label>
-                        <select class="form-control select2" data-placeholder="Choose country" name="brand_id">
+                        <select class="form-control select2" data-placeholder="Choose country" name="brand_id" required>
                         <option label="Select Brand"></option>
                             @foreach ($brands as $brand)
                                 <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
@@ -119,7 +119,7 @@
                     </div><!-- col-4 -->
                     <div class="col-lg-4">
                         <label class="form-control-label">Status: <span class="tx-danger">*</span></label><br>
-                        <select name="status" class="form-control col-md-12">
+                        <select name="status" class="form-control col-md-12" required>
                             <option value="">Select Status</option>
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
