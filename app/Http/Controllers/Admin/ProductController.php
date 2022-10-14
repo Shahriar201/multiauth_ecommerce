@@ -44,12 +44,20 @@ class ProductController extends Controller
         $image_two = $request->image_two;
         $image_three = $request->image_three;
 
-        if ($image_one) {
+        if ($image_one && $image_two) {
             $image_one_name = hexdec(uniqid()).'.'.$image_one->getClientOriginalName();
             Image::make($image_one)->resize(300, 300)->save('public/media/product/'.$image_one_name);
             $data['image_one'] = 'public/media/product/'.$image_one_name;
 
-            $product = DB::table('products')->insert($data);
+            $image_two_name = hexdec(uniqid()).'.'.$image_two->getClientOriginalName();
+            Image::make($image_two)->resize(300, 300)->save('public/media/product/'.$image_two_name);
+            $data['image_two'] = 'public/media/product/'.$image_two_name;
+
+            $image_three_name = hexdec(uniqid()).'.'.$image_three->getClientOriginalName();
+            Image::make($image_three)->resize(300, 300)->save('public/media/product/'.$image_three_name);
+            $data['image_three'] = 'public/media/product/'.$image_three_name;
+
+            DB::table('products')->insert($data);
             return redirect()->back()->with('success', 'Product Inserted Successfully!');
         }
 
