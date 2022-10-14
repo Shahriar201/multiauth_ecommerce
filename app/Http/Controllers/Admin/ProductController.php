@@ -39,11 +39,13 @@ class ProductController extends Controller
             $data['mid_slider'] = $request->mid_slider;
             $data['hot_new'] = $request->hot_new;
             $data['trend'] = $request->trend;
+            $data['created_at'] = \Carbon\Carbon::now();
 
         $image_one = $request->image_one;
         $image_two = $request->image_two;
         $image_three = $request->image_three;
 
+        // image store using laravel image intervention
         if ($image_one && $image_two) {
             $image_one_name = hexdec(uniqid()).'.'.$image_one->getClientOriginalName();
             Image::make($image_one)->resize(300, 300)->save('public/media/product/'.$image_one_name);
