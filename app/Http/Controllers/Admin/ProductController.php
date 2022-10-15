@@ -10,7 +10,13 @@ use Image;
 class ProductController extends Controller
 {
     public function productAll() {
-        dd('Ok');
+        $products = DB::table('products')
+            ->join('categories', 'products.category_id', 'categories.id')
+            ->join('brands', 'products.brand_id', 'brands.id')
+            ->select('products.*', 'categories.category_name', 'brands.brand_name')
+            ->get();
+
+        return view('admin.product.all_products', compact('products'));
     }
 
     public function productAdd() {
@@ -34,7 +40,6 @@ class ProductController extends Controller
             'status' => 'required',
         ]);
 
-        DB::beginTransaction();
         try {
             $data['product_name'] = $request->product_name;
             $data['product_code'] = $request->product_code;
@@ -75,16 +80,14 @@ class ProductController extends Controller
                 $data['image_three'] = 'public/media/product/'.$image_three_name;
 
                 DB::table('products')->insert($data);
-                DB::commit();
 
                 return redirect()->back()->with('success', 'Product Inserted Successfully!');
             }
 
             //DB::table('products')->insert($requestData);
 
-            return redirect()->back()->with('success', 'Product Inserted Successfully!');
+            return redirect()->back()->with('success', 'Product Inserted Fail!');
         } catch (\Exception $e) {
-            DB::rollback();
             return $e->getMessage();
         }
     }
