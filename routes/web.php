@@ -66,8 +66,12 @@ Route::prefix('admin')->group(function() {
     Route::get('product/all', [App\Http\Controllers\Admin\ProductController::class, 'productAll'])->name('all.product');
     Route::get('product/add', [App\Http\Controllers\Admin\ProductController::class, 'productAdd'])->name('add.product');
     Route::post('product/store', [App\Http\Controllers\Admin\ProductController::class, 'productStore'])->name('store.product');
+    Route::get('delete/product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'deleteProduct'])->name('delete.product');
 
     Route::get('/get/subcategory/{category_id}', [App\Http\Controllers\Admin\ProductController::class, 'getSubcategory']);
+
+    Route::get('inactive/product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'inActiveProduct'])->name('inactive.product');
+    Route::get('active/product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'activeProduct'])->name('active.product');
 
     // Newsletter List Routes
     Route::get('newsletters', [App\Http\Controllers\Admin\NewsletterController::class, 'newsletters'])->name('newsletters');

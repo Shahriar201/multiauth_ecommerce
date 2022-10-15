@@ -97,4 +97,32 @@ class ProductController extends Controller
 
         return json_encode($subCategory);
     }
+
+    public function inActiveProduct($id) {
+        DB::table('products')->where('id', $id)->update(['status' => 0]);
+
+        return redirect()->back()->with('success', 'Product Inctive Successfully!');
+    }
+
+    public function activeProduct($id) {
+        DB::table('products')->where('id', $id)->update(['status' => 1]);
+
+        return redirect()->back()->with('success', 'Product Active Successfully!');
+    }
+
+    public function deleteProduct($id) {
+        $product = DB::table('products')->where('id', $id)->first();
+
+        $image_one = $product->image_one;
+        $image_two = $product->image_two;
+        $image_three = $product->image_three;
+
+        unlink($image_one);
+        unlink($image_two);
+        unlink($image_three);
+
+        $product = DB::table('products')->where('id', $id)->delete();
+
+        return redirect()->back()->with('success', 'Product Deleted Successfully');
+    }
 }

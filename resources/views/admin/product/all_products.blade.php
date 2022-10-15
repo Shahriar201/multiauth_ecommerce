@@ -19,25 +19,24 @@
             <table id="datatable1" class="table display responsive nowrap">
             <thead>
                 <tr>
-                <th class="wd-15p">SL.</th>
-                <th class="wd-15p">Product Id</th>
-                <th class="wd-15p">Product Name</th>
-                <th class="wd-15p">Image</th>
-                <th class="wd-15p">Category</th>
-                <th class="wd-15p">Brand</th>
-                <th class="wd-15p">Quantity</th>
-                <th class="wd-15p">Status</th>
-                <th class="wd-20p">Action</th>
+                <th class="wd-15p" style="width: 10px;">SL.</th>
+                {{-- <th class="wd-15p" style="width: 10px;">Product Id</th> --}}
+                <th class="wd-15p" style="width: 20px;">Product Name</th>
+                <th class="wd-15p" style="width: 10px;">Image</th>
+                <th class="wd-15p" style="width: 10px;">Category</th>
+                <th class="wd-15p" style="width: 10px;">Brand</th>
+                <th class="wd-15p" style="width: 10px;">Quantity</th>
+                <th class="wd-15p" style="width: 5px;">Status</th>
+                <th class="wd-20p" style="width: 17%;">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($products as $key => $product)
                     <tr>
                         <td>{{ ++$key }}</td>
-                        <td>{{ $product->id ?? '' }}</td>
+                        {{-- <td>{{ $product->id ?? '' }}</td> --}}
                         <td>{{ $product->product_name ?? '' }}</td>
                         <td>
-                            {{-- <img style="width: 80px; height: 60px; object-fit: cover;" src="{{ (!empty($brand->brand_logo)) ? url('public/uploads/category/brand_logo/'.$brand->brand_logo):url('uploads/no_image.jpg') }}" alt="Brand Logo"> --}}
                             <img src="{{ URL::to($product->image_one) }}" style="width: 50px; height: 40px; object-fit: cover;"/>
                         </td>
                         <td>{{ $product->category_name ?? '' }}</td>
@@ -51,9 +50,14 @@
                             @endif
                         </td>
                         <td>
-                            <a href="#" title="Edit" class="btn btn-sm btn-info mb-1">Edit</a>
-                            <a href="#" title="View" class="btn btn-sm btn-warning mb-1">View</a>
-                            <a href="#" title="Delete" class="btn btn-sm btn-danger mb-1" id="delete">Delete</a>
+                            <a href="#" title="Edit" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                            <a href="{{ URL::to('admin/delete/product/'.$product->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete"><i class="fa fa-trash"></i></a>
+                            <a href="#" title="View" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></a>
+                            @if ($product->status == 1)
+                                <a href="{{ URL::to('admin/inactive/product/'.$product->id) }}" title="Inactive" class="btn btn-sm btn-danger"><i class="fa fa-thumbs-down"></i></a>
+                            @else
+                                <a href="{{ URL::to('admin/active/product/'.$product->id) }}" title="Active" class="btn btn-sm btn-success"><i class="fa fa-thumbs-up"></i></a>
+                            @endif
                         </td>
                     </tr>
                 @empty
