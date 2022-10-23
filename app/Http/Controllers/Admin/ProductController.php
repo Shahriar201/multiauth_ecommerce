@@ -125,4 +125,10 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', 'Product Deleted Successfully');
     }
+
+    public function editProduct($id) {
+        $editProduct = DB::table('products')->where('id', $id)->first();
+
+        return view('admin.product.edit_product', compact('editProduct'));
+    }
 }

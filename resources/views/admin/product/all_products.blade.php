@@ -50,7 +50,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="#" title="Edit" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                            <a href="{{ URL::to('admin/edit/product/'.$product->id) }}" title="Edit" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
                             <a href="{{ URL::to('admin/delete/product/'.$product->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete"><i class="fa fa-trash"></i></a>
                             <a href="#" title="View" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></a>
                             @if ($product->status == 1)
