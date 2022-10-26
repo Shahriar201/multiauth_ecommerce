@@ -11,7 +11,7 @@
     <div class="card pd-20 pd-sm-40">
         <h6 class="card-body-title">Update Product</h6>
         <p class="mg-b-20 mg-sm-b-30">Update Product</p>
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('update.product.without.image', $editProduct->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-layout">
                 <div class="row mg-b-25">
@@ -56,7 +56,11 @@
                     <div class="form-group mg-b-10-force">
                         <label class="form-control-label">Sub Category: <span class="tx-danger">*</span></label>
                         <select class="form-control select2" data-placeholder="Choose country" name="subcategory_id" required>
-
+                            @foreach ($subCategories as $subCategory)
+                                <option value="{{ $subCategory->id }}" <?php if ($subCategory->id == $editProduct->subcategory_id) {
+                                    echo "selected";
+                                }?>>{{ $subCategory->subcategory_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     </div><!-- col-4 -->
@@ -108,8 +112,12 @@
                         <label class="form-control-label">Status: <span class="tx-danger">*</span></label><br>
                         <select name="status" class="form-control col-md-12" required>
                             <option value="">Select Status</option>
-                            <option value="1" {{ @$editProduct->status == 1 ? 'Active' : '' }}>Active</option>
-                            <option value="0" {{ @$editProduct->status == 1 ? 'Active' : '' }}>Inactive</option>
+                            <option value="1" <?php if ($editProduct->status == 1) {
+                                echo "selected";
+                            }?>>Active</option>
+                            <option value="0" <?php if ($editProduct->status == 0) {
+                                echo "selected";
+                            }?>>Inactive</option>
                         </select>
                     </div><!-- col-4 -->
 

@@ -129,8 +129,13 @@ class ProductController extends Controller
     public function editProduct($id) {
         $editProduct = DB::table('products')->where('id', $id)->first();
         $categories = DB::table('categories')->where('status', 1)->get();
+        $subCategories = DB::table('sub_categories')->where('status', 1)->get();
         $brands = DB::table('brands')->where('status', 1)->get();
 
-        return view('admin.product.edit_product', compact('editProduct', 'brands', 'categories'));
+        return view('admin.product.edit_product', compact('editProduct', 'brands', 'categories', 'subCategories'));
+    }
+
+    public function updateProductWithoutImage(Request $request, $id) {
+        dd('Ok');
     }
 }
