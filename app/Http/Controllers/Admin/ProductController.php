@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Image;
 
 class ProductController extends Controller
@@ -178,6 +179,112 @@ class ProductController extends Controller
 
         } catch (\Exception $e) {
             return $e->getMessage();
+        }
+    }
+
+    public function updateProductWithImage(Request $request, $id) {
+        // $validator = Validator::make($request->all(),[
+        //     'image_one' => 'required',
+        //     'image_two' => 'required',
+        //     'image_three' => 'required',
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return redirect()->back()->with('error', 'Validation Error');
+        // }
+
+        $image_one = $request->image_one;
+        $image_two = $request->image_two;
+        $image_three = $request->image_three;
+
+        $old_one = $request->old_one;
+        $old_two = $request->old_two;
+        $old_three = $request->old_three;
+
+        $data = array();
+
+        if ($request->has('image_one')) {
+            unlink($old_one);
+
+            $image_one_name = hexdec(uniqid()).'.'.$image_one->getClientOriginalName();
+            Image::make($image_one)->resize(300, 300)->save('public/media/product/'.$image_one_name);
+            $data['image_one'] = 'public/media/product/'.$image_one_name;
+
+            DB::table('products')->where('id', $id)->update($data);
+
+            return redirect()->route('all.product')->with('success', 'Image One Update!');
+
+        }
+
+        if ($request->has('image_two')) {
+            unlink($old_two);
+
+            $image_two_name = hexdec(uniqid()).'.'.$image_two->getClientOriginalName();
+            Image::make($image_two)->resize(300, 300)->save('public/media/product/'.$image_two_name);
+            $data['image_two'] = 'public/media/product/'.$image_two_name;
+
+            DB::table('products')->where('id', $id)->update($data);
+
+            return redirect()->route('all.product')->with('success', 'Image Two Update!');
+
+        }
+
+       if ($request->has('image_three')) {
+            unlink($old_three);
+
+            $image_three_name = hexdec(uniqid()).'.'.$image_three->getClientOriginalName();
+            Image::make($image_three)->resize(300, 300)->save('public/media/product/'.$image_three_name);
+            $data['image_three'] = 'public/media/product/'.$image_three_name;
+
+            DB::table('products')->where('id', $id)->update($data);
+
+            return redirect()->route('all.product')->with('success', 'Image Three Update!');
+
+        }
+
+        if ($request->has('image_one') && $request->has('image_two')) {
+            unlink($old_one);
+            unlink($old_two);
+            unlink($old_three);
+
+            $image_one_name = hexdec(uniqid()).'.'.$image_one->getClientOriginalName();
+            Image::make($image_one)->resize(300, 300)->save('public/media/product/'.$image_one_name);
+            $data['image_one'] = 'public/media/product/'.$image_one_name;
+
+            $image_two_name = hexdec(uniqid()).'.'.$image_two->getClientOriginalName();
+            Image::make($image_two)->resize(300, 300)->save('public/media/product/'.$image_two_name);
+            $data['image_two'] = 'public/media/product/'.$image_two_name;
+
+            DB::table('products')->where('id', $id)->update($data);
+
+            return redirect()->route('all.product')->with('success', 'Image One and Two Are Update!');
+
+        }
+
+        if ($request->has('image_one') && $request->has('image_two') && $request->has('image_three')) {
+            unlink($old_one);
+            unlink($old_two);
+            unlink($old_three);
+
+            $image_one_name = hexdec(uniqid()).'.'.$image_one->getClientOriginalName();
+            Image::make($image_one)->resize(300, 300)->save('public/media/product/'.$image_one_name);
+            $data['image_one'] = 'public/media/product/'.$image_one_name;
+
+            $image_two_name = hexdec(uniqid()).'.'.$image_two->getClientOriginalName();
+            Image::make($image_two)->resize(300, 300)->save('public/media/product/'.$image_two_name);
+            $data['image_two'] = 'public/media/product/'.$image_two_name;
+
+            $image_three_name = hexdec(uniqid()).'.'.$image_three->getClientOriginalName();
+            Image::make($image_three)->resize(300, 300)->save('public/media/product/'.$image_three_name);
+            $data['image_three'] = 'public/media/product/'.$image_three_name;
+
+            DB::table('products')->where('id', $id)->update($data);
+
+            return redirect()->route('all.product')->with('success', 'All Images Are Update!');
+
+        }
+        else {
+            return redirect()->route('all.product')->with('success', 'Images Are Not Update!');
         }
     }
 }

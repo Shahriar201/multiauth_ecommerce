@@ -10,7 +10,6 @@
 <div class="sl-pagebody">
     <div class="card pd-20 pd-sm-40">
         <h6 class="card-body-title">Update Product</h6>
-        <p class="mg-b-20 mg-sm-b-30">Update Product</p>
         <form action="{{ route('update.product.without.image', $editProduct->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-layout">
@@ -170,38 +169,62 @@
             </div><!-- form-layout -->
         </form>
     </div><!-- card -->
-
-    <div class="card container">
-        <div class="row">
-            <form action="">
-                <div class="col-lg-4">
-                    <label class="form-control-label">Image One (Main Thumbnail): <span class="tx-danger">*</span></label><br>
-                    <label class="custom-file">
-                        <input type="file" id="file" class="custom-file-input" name="image_one" onchange="readURL(this);" required="" accept="image">
-                        <span class="custom-file-control"></span>
-                        <img src="#" alt="" id="one">
-                    </label>
-                </div><!-- col-4 -->
-                <div class="col-lg-4">
-                    <label class="form-control-label">Image Two: <span class="tx-danger">*</span></label><br>
-                    <label class="custom-file">
-                        <input type="file" id="file" class="custom-file-input" name="image_two" onchange="readURL1(this);" required="" accept="image">
-                        <span class="custom-file-control"></span>
-                        <img src="#" alt="" id="two">
-                    </label>
-                </div><!-- col-4 -->
-                <div class="col-lg-4">
-                    <label class="form-control-label">Image Three: <span class="tx-danger">*</span></label><br>
-                    <label class="custom-file">
-                        <input type="file" id="file" class="custom-file-input" name="image_three" onchange="readURL2(this);" required accept="image">
-                        <span class="custom-file-control"></span>
-                        <img src="#" alt="" id="three">
-                    </label>
-                </div><!-- col-4 -->
+</div>
+    <!-- Update Product With Image -->
+    <div class="sl-pagebody">
+        <div class="card pd-20 pd-sm-40">
+            <h6 class="card-body-title">Update Product With Image</h6>
+            <form action="{{ route('update.product.with.image', $editProduct->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <label class="form-control-label">Image One (Main Thumbnail): <span class="tx-danger">*</span></label><br>
+                        <label class="custom-file">
+                            <input type="file" id="file" class="custom-file-input" name="image_one" onchange="readURL(this);" accept="image">
+                            <span class="custom-file-control"></span>
+                            {{-- <img src="#" alt="" id="one"> --}}
+                            <input type="hidden" name="old_one" value="{{ $editProduct->image_one }}">
+                        </label>
+                    </div><!-- col-4 -->
+                    <div class="col-lg-6 col-md-6">
+                        <img src="{{ URL::to($editProduct->image_one) }}" style="width: 80px; height: 80px;" alt="" id="one">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <label class="form-control-label">Image Two: <span class="tx-danger">*</span></label><br>
+                        <label class="custom-file">
+                            <input type="file" id="file" class="custom-file-input" name="image_two" onchange="readURL1(this);" accept="image">
+                            <span class="custom-file-control"></span>
+                            {{-- <img src="#" alt="" id="two"> --}}
+                            <input type="hidden" name="old_two" value="{{ $editProduct->image_two }}">
+                        </label>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <img src="{{ URL::to($editProduct->image_two) }}" style="width: 80px; height: 80px;" alt="" id="two">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <label class="form-control-label">Image Three: <span class="tx-danger">*</span></label><br>
+                        <label class="custom-file">
+                            <input type="file" id="file" class="custom-file-input" name="image_three" onchange="readURL2(this);" accept="image">
+                            <span class="custom-file-control"></span>
+                            {{-- <img src="#" alt="" id="three"> --}}
+                            <input type="hidden" name="old_three" value="{{ $editProduct->image_three }}">
+                        </label>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <img src="{{ URL::to($editProduct->image_three) }}" style="width: 80px; height: 80px;" alt="" id="three">
+                    </div>
+                </div>
+                <br>
+                <div class="form-layout-footer">
+                    <button class="btn btn-info mg-r-5" type="submit">Image Update</button>
+                </div><!-- form-layout-footer -->
             </form>
         </div>
     </div>
-</div
 
 <script src="{{ asset('public/backend/lib/jquery/jquery.min.js') }}"></script>
 
