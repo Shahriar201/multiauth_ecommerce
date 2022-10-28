@@ -78,6 +78,7 @@ Route::prefix('admin')->group(function() {
 
     // Post Category Routes
     Route::get('post/categories', [App\Http\Controllers\Admin\PostCategoryController::class, 'postCategories'])->name('all.post.category');
+    Route::post('post/category/store', [App\Http\Controllers\Admin\PostCategoryController::class, 'postCategoryStore'])->name('post.category.store');
 
     // Newsletter List Routes
     Route::get('newsletters', [App\Http\Controllers\Admin\NewsletterController::class, 'newsletters'])->name('newsletters');

@@ -32,18 +32,25 @@
                 @forelse ($postCategories as $key => $postCategory)
                     <tr>
                         <td>{{ ++$key }}</td>
-                        <td>{{ $postCategory->category_name_en ?? '' }}</td>
-                        <td>{{ $postCategory->category_name_bn ?? '' }}</td>
+                        <td>{{ $postCategory->post_category_name_en ?? '' }}</td>
+                        <td>{{ $postCategory->post_category_name_bn ?? '' }}</td>
                         <td>
-                            @if ($product->status == 1)
+                            @if ($postCategory->status == 1)
                                 <span class="badge badge-success">Active</span>
                             @else
                                 <span class="badge badge-danger">Inactive</span>
                             @endif
                         </td>
                         <td>
-                            <a href="#" title="Edit" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                            <a href="#" title="Delete" class="btn btn-sm btn-danger" id="delete"><i class="fa fa-trash"></i></a>
+                            {{-- <a href="#" title="Edit" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                            <a href="#" title="Delete" class="btn btn-sm btn-danger" id="delete"><i class="fa fa-trash"></i></a> --}}
+                            <a href="#" title="Edit" data-toggle="modal" data-target='.update_modal' class="btn btn-sm btn-info"
+                                data-id="{{ $postCategory->id }}"
+                                data-nameEn="{{ $postCategory->post_category_name_en }}"
+                                data-nameBn="{{ $postCategory->post_category_name_bn }}"
+                                data-status="{{ $postCategory->status }}"
+                            ><i class="fa fa-edit"></i></a>
+                            <a href="{{ route('delete.category', $postCategory->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 @empty
@@ -56,5 +63,113 @@
         </div>
     </div>
   </div
+
+    <!-- Create Modal -->
+    <div class="modal fade create_modal" id="create_modal" tabindex="-1" role="dialog" aria-labelledby="create_modal" aria-hidden="true"  data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Post Category</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form method="post" action="{{ route('post.category.store') }}">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="category_name">Category Name English</label>
+                            <input type="text" class="form-control" name="post_category_name_en" aria-describedby="emailHelp" placeholder="Enter Category Name English" required>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="category_name">Category Name Bangla</label>
+                            <input type="text" class="form-control" name="post_category_name_bn" aria-describedby="emailHelp" placeholder="Enter Category Name Bangla" required>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="status">Status</label>
+                            <select name="status" class="form-control col-md-12" required>
+                                <option value="">Select Status</option>
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+    <!-- End Create Modal -->
+
+    <!-- Update Modal -->
+    <div class="modal fade update_modal" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="update_modal" aria-hidden="true"  data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form method="post" action="{{ route('update.category') }}">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <input type="hidden" id="id" class="id" name="id" value="">
+                        <div class="form-group col-md-12">
+                            <label for="category_name">Category</label>
+                            <input type="text" class="form-control category_name" id="category_name" name="category_name" aria-describedby="emailHelp" placeholder="Enter Category Name">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="status">Status</label>
+                            <select name="status" class="form-control col-md-12 status" id="status">
+                                <option value="">Select Status</option>
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+    <!-- End Update Modal -->
+
+    <script>
+        $(document).ready(function() {
+            $('#update_modal').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget)
+
+                var id = button.data('id');
+                var categoryName = button.data('name');
+                var status = button.data('status');
+
+                var modal = $(this);
+
+                modal.find('.modal-body .id').val(id);
+                modal.find('.modal-body .category_name').val(categoryName);
+                modal.find('.modal-body .status').val(status);
+            });
+        });
+    </script>
 
 @endsection
