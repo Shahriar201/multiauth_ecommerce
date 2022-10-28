@@ -17,6 +17,7 @@ class CreatePostCategoriesTable extends Migration
             $table->id();
             $table->string('post_category_name_en');
             $table->string('post_category_name_bn');
+            $table->tinyInteger('status')->comment('1=active, 0=inactive');
             $table->tinyInteger('created_by')->nullable();
             $table->tinyInteger('updated_by')->nullable();
             $table->timestamps();

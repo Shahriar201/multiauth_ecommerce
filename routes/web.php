@@ -76,6 +76,9 @@ Route::prefix('admin')->group(function() {
     Route::get('inactive/product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'inActiveProduct'])->name('inactive.product');
     Route::get('active/product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'activeProduct'])->name('active.product');
 
+    // Post Category Routes
+    Route::get('post/categories', [App\Http\Controllers\Admin\PostCategoryController::class, 'postCategories'])->name('all.post.category');
+
     // Newsletter List Routes
     Route::get('newsletters', [App\Http\Controllers\Admin\NewsletterController::class, 'newsletters'])->name('newsletters');
     Route::get('delete/newsletter/{id}', [App\Http\Controllers\Admin\NewsletterController::class, 'deleteNewsletter'])->name('delete.newsletter');
