@@ -122,8 +122,7 @@
     <script src="{{ asset('public/backend/lib/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('public/backend/lib/sweetalert/sweetalert.min.js') }}"></script>
 
-    <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script>
-
+    {{-- <script src="{{ asset('public/backend') }}/lib/jquery/jquery.js"></script> --}}
     <script src="{{ asset('public/backend/lib/summernote/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('public/backend/lib/medium-editor/medium-editor.js') }}"></script>
 

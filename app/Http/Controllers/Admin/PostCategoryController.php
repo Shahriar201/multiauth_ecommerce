@@ -47,4 +47,37 @@ class PostCategoryController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function postCategoryUpdate(Request $request) {
+
+        $validator = Validator::make($request->all(),[
+            'post_category_name_en' => 'required',
+            'post_category_name_bn' => 'required',
+            'status'           => 'required',
+        ],[
+            'post_category_name_en.required' => 'Category Name English field is required',
+            'post_category_name_bn.required' => 'Category Name Bangla field is required',
+            'status.required'                => 'Status field is required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try {
+            $requestData = [
+                'post_category_name_en' => $request->post_category_name_en,
+                'post_category_name_bn' => $request->post_category_name_bn,
+                'status'                => $request->status,
+                'updated_by'            => auth()->user()->id,
+                'updated_at'            => now()
+            ];
+
+            DB::table('post_categories')->where('id', $request->id)->update($requestData);
+
+            return redirect()->back()->with('success', 'Post Category Updated Successfully!');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }
