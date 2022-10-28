@@ -80,4 +80,10 @@ class PostCategoryController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function postCategoryDelete($id) {
+        DB::table('post_categories')->where('id', $id)->delete();
+
+        return redirect()->back()->with('success', 'Post Category Deleted Successfully!');
+    }
 }

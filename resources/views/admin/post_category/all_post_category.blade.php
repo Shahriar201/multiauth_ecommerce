@@ -48,7 +48,7 @@
                                 data-namebn="{{ $postCategory->post_category_name_bn }}"
                                 data-status="{{ $postCategory->status }}"
                             ><i class="fa fa-edit"></i></a>
-                            <a href="{{ route('delete.category', $postCategory->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete"><i class="fa fa-trash"></i></a>
+                            <a href="{{ route('post.category.delete', $postCategory->id) }}" title="Delete" class="btn btn-sm btn-danger" id="delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 @empty
