@@ -62,7 +62,7 @@
           </a>
           <ul class="sl-menu-sub nav flex-column">
             <li class="nav-item"><a href="{{ route('all.post.category') }}" class="nav-link">Post Category</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Post</a></li>
+            <li class="nav-item"><a href="{{ route('get.all.post') }}" class="nav-link">Post</a></li>
           </ul>
 
         {{-- Others Menu --}}

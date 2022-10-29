@@ -82,6 +82,9 @@ Route::prefix('admin')->group(function() {
     Route::post('update/post/category/{id}', [App\Http\Controllers\Admin\PostCategoryController::class, 'postCategoryUpdate'])->name('post.category.update');
     Route::get('delete/post/category/{id}', [App\Http\Controllers\Admin\PostCategoryController::class, 'postCategoryDelete'])->name('post.category.delete');
 
+    // Post Routes
+    Route::get('get/all/post', [App\Http\Controllers\Admin\PostController::class, 'getAllPost'])->name('get.all.post');
+
     // Newsletter List Routes
     Route::get('newsletters', [App\Http\Controllers\Admin\NewsletterController::class, 'newsletters'])->name('newsletters');
     Route::get('delete/newsletter/{id}', [App\Http\Controllers\Admin\NewsletterController::class, 'deleteNewsletter'])->name('delete.newsletter');

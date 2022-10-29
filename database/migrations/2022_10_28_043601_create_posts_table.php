@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->text('post_details_en')->nullable();
             $table->text('post_details_bn')->nullable();
             $table->string('post_image')->nullable();
+            $table->tinyInteger('status')->nullable()->comment('1=active, 0=deactive');
             $table->tinyInteger('created_by')->nullable();
             $table->tinyInteger('updated_by')->nullable();
             $table->timestamps();
