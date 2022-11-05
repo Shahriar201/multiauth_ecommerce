@@ -84,6 +84,8 @@ Route::prefix('admin')->group(function() {
 
     // Post Routes
     Route::get('get/all/post', [App\Http\Controllers\Admin\PostController::class, 'getAllPost'])->name('get.all.post');
+    Route::get('add/post', [App\Http\Controllers\Admin\PostController::class, 'postAdd'])->name('add.post');
+    Route::post('store/post', [App\Http\Controllers\Admin\PostController::class, 'postStore'])->name('store.post');
 
     // Newsletter List Routes
     Route::get('newsletters', [App\Http\Controllers\Admin\NewsletterController::class, 'newsletters'])->name('newsletters');

@@ -167,7 +167,7 @@
             </div><!-- form-layout -->
         </form>
     </div><!-- card -->
-</div
+</div>
 
 <script src="{{ asset('public/backend/lib/jquery/jquery.min.js') }}"></script>
 
