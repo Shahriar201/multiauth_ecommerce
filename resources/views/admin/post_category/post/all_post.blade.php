@@ -22,9 +22,9 @@
             <thead>
                 <tr>
                 <th class="wd-5p">SL.</th>
+                <th class="wd-10p">Post Category</th>
                 <th class="wd-10p">Post Title English</th>
                 <th class="wd-10p">Post Title Bangla</th>
-                <th class="wd-10p">Post Category</th>
                 <th class="wd-10p">Post Details English</th>
                 <th class="wd-10p">Post Details Bangla</th>
                 <th class="wd-10p">Image</th>
@@ -36,7 +36,7 @@
                 @forelse ($posts as $key => $post)
                     <tr>
                         <td>{{ ++$key }}</td>
-                        <td>{{ $post->post_category_id ?? '' }}</td>
+                        <td>{{ $post->post_category_name_en ?? '' }}</td>
                         <td>{{ $post->post_title_en ?? '' }}</td>
                         <td>{{ $post->post_title_bn ?? '' }}</td>
                         <td>{{ $post->post_details_en ?? '' }}</td>

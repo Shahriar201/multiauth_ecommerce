@@ -11,7 +11,10 @@ use Image;
 class PostController extends Controller
 {
     public function getAllPost() {
-        $posts = DB::table('posts')->get();
+        $posts = DB::table('posts')
+                ->join('post_categories', 'posts.post_category_id', 'post_categories.id')
+                ->select('posts.*', 'post_categories.post_category_name_en')
+                ->get();
 
         return view('admin.post_category.post.all_post', compact('posts'));
     }
@@ -69,5 +72,9 @@ class PostController extends Controller
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+    }
+
+    public function postEdit($id) {
+        dd('Ok');
     }
 }
